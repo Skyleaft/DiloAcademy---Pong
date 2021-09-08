@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // Objek untuk menggambar prediksi lintasan bola
+    public Trajectory trajectory;
+
     // Pemain 1
     public PlayerController player1; // skrip
     private Rigidbody2D player1Rigidbody;
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour
         if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height - 73, 120, 53), "TOGGLE\nDEBUG INFO"))
         {
             isDebugWindowShown = !isDebugWindowShown;
+            trajectory.enabled = !trajectory.enabled;
         }
 
         // Jika isDebugWindowShown == true, tampilkan text area untuk debug window.

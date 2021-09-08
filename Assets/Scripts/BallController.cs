@@ -12,6 +12,8 @@ public class BallController : MonoBehaviour
     // Besarnya gaya awal yang diberikan untuk mendorong bola
     public float xInitialForce;
     public float yInitialForce;
+    public Vector2 force;
+    public float ballForce = 70f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,11 +53,13 @@ public class BallController : MonoBehaviour
         if (randomDirection < 1.0f)
         {
             // Gunakan gaya untuk menggerakkan bola ini.
-            rigidBody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce));
+            force = new Vector2(-xInitialForce, yRandomInitialForce).normalized * ballForce;
+            rigidBody2D.AddForce(force);
         }
         else
         {
-            rigidBody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
+            force = new Vector2(xInitialForce, yRandomInitialForce).normalized * ballForce;
+            rigidBody2D.AddForce(force);
         }
     }
 
